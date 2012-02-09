@@ -1,0 +1,33 @@
+This is a groovy shell for remote ejb container (tested against OpenEjb 4.0.0-beta-2)
+
+BUILDING:
+================
+    mvn clean package assembly:single
+
+
+
+
+
+RUNING:
+================
+    java -classpath path_to_remote_ejbs_interfaces:the_generated_jar EJBShell
+ex: 
+    java -classpath "target/*:." EJBShell
+
+
+
+
+CONFIG:
+================
+A file in the current directory "ejb-shell.properties":
+
+    java.naming.factory.initial=org.apache.openejb.client.RemoteInitialContextFactory
+    java.naming.provider.url=ejbd://localhost:4201
+
+To use with another containers, change the java.naming.factory.initial to your container.
+Make sure you have the required classes in the classpath. 
+
+The user name and password, are whatever on the server.
+
+
+
